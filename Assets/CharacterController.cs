@@ -18,11 +18,22 @@ public class CharacterController : MonoBehaviour
     public float camRotationSpeed = 1.5f;
     public float jumpForce = 300.0f;
 
+    public AudioClip jump;
+    public AudioClip backgroundMusic;
+
+    public AudioSource sfxPlayer;
+    public AudioSource musicPlayer;
+
 
     void Start()
     {
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
+
+        musicPlayer.clip = backgroundMusic;
+        musicPlayer.loop = true;
+        musicPlayer.Play();
+        sfxPlayer.PlayOneShot(jump);
     }
 
     
@@ -35,9 +46,9 @@ public class CharacterController : MonoBehaviour
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
 
         if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
-      {
+        {
           myRigidbody.AddForce(transform.up * jumpForce);
-      }
+        }
         Vector3 newVelocity = (transform.forward * Input.GetAxis("Vertical") * maxSpeed) + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
         myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z);
 
@@ -46,5 +57,7 @@ public class CharacterController : MonoBehaviour
 
         camRotation = camRotation + Input.GetAxis("Mouse Y") * camRotationSpeed;
         cam.transform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0.0f, 0.0f));
+
+
     }
 }
