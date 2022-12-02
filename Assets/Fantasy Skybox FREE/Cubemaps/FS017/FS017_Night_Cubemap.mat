@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 2800000, guid: c952eb03fe2ac9a42ac3c5ac822c516a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 134608dbb5b4b3e458e3567b13281134, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
@@ -43,7 +43,6 @@ Material:
         m_Texture: {fileID: 2800000, guid: 8f817f454fe4cdc4aabf11e6505cfc23, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []
