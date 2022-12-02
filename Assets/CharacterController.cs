@@ -34,6 +34,10 @@ public class CharacterController : MonoBehaviour
         musicPlayer.loop = true;
         musicPlayer.Play();
         sfxPlayer.PlayOneShot(jump);
+
+        //locking cursor and making it non vissable
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     
@@ -57,7 +61,6 @@ public class CharacterController : MonoBehaviour
 
         camRotation = camRotation + Input.GetAxis("Mouse Y") * camRotationSpeed;
         cam.transform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0.0f, 0.0f));
-
 
     }
 }
