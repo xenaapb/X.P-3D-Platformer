@@ -24,16 +24,19 @@ public class CharacterController : MonoBehaviour
     public AudioSource sfxPlayer;
     public AudioSource musicPlayer;
 
+    Animator myAnim;
 
     void Start()
     {
+        myAnim = GetComponentInChildren<Animator>();
+        
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
 
         musicPlayer.clip = backgroundMusic;
         musicPlayer.loop = true;
         musicPlayer.Play();
-        sfxPlayer.PlayOneShot(jump);
+        
 
         //locking cursor and making it non vissable
         Cursor.visible = false;
@@ -48,12 +51,15 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
+        myAnim.SetBool("isOnGround", isOnGround);
 
         if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
         {
-          myRigidbody.AddForce(transform.up * jumpForce);
+            myAnim.SetTrigger("jumped");
+            myRigidbody.AddForce(transform.up * jumpForce);
         }
         Vector3 newVelocity = (transform.forward * Input.GetAxis("Vertical") * maxSpeed) + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
+        myAnim.SetFloat("speed", newVelocity.magnitude);
         myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z);
 
         rotation = rotation + Input.GetAxis("Mouse X") * rotationSpeed;
