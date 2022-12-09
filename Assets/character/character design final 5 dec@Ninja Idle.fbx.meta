@@ -47,7 +47,11 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+<<<<<<< Updated upstream:Assets/character/character design final 5 dec@Ninja Idle.fbx.meta
       loopBlend: 1
+=======
+      loopBlend: 0
+>>>>>>> Stashed changes:Assets/character design final 5 dec@Ninja Idle.fbx.meta
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
