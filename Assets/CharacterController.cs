@@ -28,6 +28,7 @@ public class CharacterController : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         myAnim = GetComponentInChildren<Animator>();
         
         cam = GameObject.Find("Main Camera");
@@ -38,9 +39,9 @@ public class CharacterController : MonoBehaviour
         musicPlayer.Play();
         
 
-        //locking cursor and making it non vissable
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+      //locking cursor and making it non vissable
+        //Cursor.visible = false;
+        
     }
 
     
@@ -50,6 +51,7 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
         myAnim.SetBool("isOnGround", isOnGround);
 
